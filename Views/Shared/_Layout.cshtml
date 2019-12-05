@@ -20,6 +20,9 @@
   <script src="//code.jquery.com/jquery-1.12.4.js"></script>
   <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <style>
+        *{
+            font-family: "Palatino", "Helvetica Neue", Helvetica, sans-serif;
+        }
         body{
             width: 970px;
             margin: 0px auto;
@@ -86,11 +89,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="font-size: 25px;"><img src="~/images/elysianmotorslogo.png" alt="Elysian Motors Logo" style="width= 40px; height: 40px; display: inline-block"/>Elysian Motors</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand" style="font-size: 25px;"><img src="~/images/elysianmotorslogo.png" alt="Elysian Motors Logo" style="width: 40px; height: 40px; display: inline-block"/>Elysian Motors</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" >
                     <li><a asp-area="" asp-controller="Home" asp-action="Index" style="margin-left: -17.5px; font-size: 16px; padding-top: 25px;">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About" style="margin-left: -17.5px; font-size: 16px; padding-top: 25px;">About</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="AddVehicle" style="margin-left: -17.5px; font-size: 16px; padding-top: 25px;">Add Your Vehicle</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="SellerList" style="margin-left: -17.5px; font-size: 16px; padding-top: 25px;">Seller List</a></li>
+
                 </ul>
             </div>
         </div>

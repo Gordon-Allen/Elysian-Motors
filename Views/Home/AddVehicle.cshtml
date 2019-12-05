@@ -1,0 +1,72 @@
+@model Vehicle
+
+<h2>Create a Vehicle Listing</h2>
+<form asp-action="btAddVehicle" asp-controller="Home" method="POST">
+
+    <div class="form-group row">
+        <span asp-validation-for="Year"></span>
+        <label asp-for="Year" class="col-sm-2 col-form-label"></label>
+        <input type="text" asp-for="Year" >
+    </div>
+
+    <div class="form-group row">
+        <span asp-validation-for="Make"></span>
+        <label asp-for="Make" class="col-sm-2 col-form-label"></label>
+        <input type="text" asp-for="Make" >
+    </div>
+    
+    <div class="form-group row">
+        <span asp-validation-for="Model"></span>
+        <label asp-for="Model" class="col-sm-2 col-form-label"></label>
+        <input type="text" asp-for="Model" >
+    </div>
+
+    <div class="form-group row">
+        <span asp-validation-for="Color"></span>
+        <label asp-for="Color" class="col-sm-2 col-form-label"></label>
+        <input type="text" asp-for="Color" >
+    </div>
+    <div class="form-group row">
+        <span asp-validation-for="Mileage"></span>
+        <label asp-for="Mileage" class="col-sm-2 col-form-label"></label>
+        <input type="text" asp-for="Mileage" >
+    </div>
+    <div class="form-group row">
+        <span asp-validation-for="VehicleType"></span>
+        <label asp-for="VehicleType" class="col-sm-2 col-form-label"></label>
+        <select type="text" asp-for="VehicleType" >
+            <option value="">Select Your Vehicle's Type</option>
+            <option value="Muscle">Muscle</option>
+            <option value="Hot-Rod">Hot-Rod</option>
+            <option value="Classic">Classic</option>
+            <option value="Super-Car">Super-Car</option>
+            <option value="Luxury">Luxury</option>
+            <option value="Tuner">Tuner</option>
+            <option value="SUV/Utility">SUV/Utility</option>
+            <option value="Motorcycle">Motorcycle</option>
+            <option value="Plane">Plane</option>
+            <option value="Helicopter">Helicopter</option>
+            <option value="Spaceship">Spaceship</option>
+        </select>
+    </div>
+    <div class="form-group row">
+        <span asp-validation-for="EngineType"></span>
+        <label asp-for="EngineType" class="col-sm-2 col-form-label"></label>
+        <input type="text" asp-for="EngineType" >
+    </div>
+    <div class="form-group row">
+        <span asp-validation-for="NumberOfSeats"></span>
+        <label asp-for="NumberOfSeats" class="col-sm-2 col-form-label"></label>
+        <input type="number" asp-for="NumberOfSeats" >
+    </div>
+    <!-- <div class="form-group row">
+        <label asp-for="Img" class="col-sm-2 col-form-label"></label>
+        <input type="file" asp-for="Img" >
+    </div> -->
+    <div class="form-group row">
+        <span asp-validation-for="Price"></span>
+        <label asp-for="Price" class="col-sm-2 col-form-label"></label>
+        <input type="text" asp-for="Price" >
+    </div>
+    <input type="submit" class="button-primary" value="Add Your Vehicle">
+</form>
