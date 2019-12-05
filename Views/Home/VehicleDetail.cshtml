@@ -1,5 +1,10 @@
 @model Vehicle
 
+@{
+    ViewData["Title"] = "Your Dream Car";
+}
+
+
 <br>
 <fieldset class="vehicledetail-container">
     <h1>@ViewBag.VehicleDetail.Year @ViewBag.VehicleDetail.Make @ViewBag.VehicleDetail.Model</h1>
