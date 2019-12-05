@@ -7,25 +7,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ElysianMotors.Models
 {
-    public class Customer
-    {
-        [Key]
-        public int CustomerId { get; set; }
-        [Required]
-        [MinLength(2, ErrorMessage = "Customer's First Name has to be at least (2) characters")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [MinLength(2, ErrorMessage = "Customer's Last Name has to be at least (2) characters")]
-        public string LastName { get; set; }
-
-        [Required(ErrorMessage = "Please enter a vaid email address or enter an additional email")]
-        [EmailAddress]
-        public string Email { get; set; }
-
-        public List<Order> CustomerToVehicle { get; set; }
-
-    }
     public class Vehicle
     {
         [Key]
@@ -63,19 +44,32 @@ namespace ElysianMotors.Models
 
         [Required]
         public string Price { get; set; }
-        public List<Order> VehicleToCustomer { get; set; }
     }
 
     public class Order
     {
         [Key]
         public int OrderId { get; set; }
-        public DateTime OrderDate { get; set; } = DateTime.Now;
-        public int CustomerId {get; set;}
         public int VehicleID { get; set; }
         public string VehicleName {get; set;}
-        public double Price {get; set;}
-        public Customer PurchaseCustomer { get; set; }
-        public Vehicle SoldVehicle {get; set;}
+        public double PurchasePrice {get; set;}
+
+        [Required]
+        [MinLength(2, ErrorMessage = "Your 'First-Name' has to be at least (2) characters")]
+        [Display(Name = "First Name")]
+        public string CustomerFirstName { get; set; }
+
+        [Required]
+        [MinLength(2, ErrorMessage = "Your 'Last-Name' has to be at least (2) characters")]
+        [Display(Name = "Last Name")]
+        public string CustomerLastName { get; set; }
+
+        [Required(ErrorMessage = "Please enter a valid Email-Address")]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string CustomerEmail { get; set; }
+
+        public DateTime OrderDate { get; set; } = DateTime.Now;
+
     }
 }

@@ -17,45 +17,29 @@ namespace ElysianMotors.Migrations
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("ElysianMotors.Models.Customer", b =>
-                {
-                    b.Property<int>("CustomerId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Email")
-                        .IsRequired();
-
-                    b.Property<string>("FirstName")
-                        .IsRequired();
-
-                    b.Property<string>("LastName")
-                        .IsRequired();
-
-                    b.HasKey("CustomerId");
-
-                    b.ToTable("Customers");
-                });
-
             modelBuilder.Entity("ElysianMotors.Models.Order", b =>
                 {
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CustomerId");
+                    b.Property<string>("CustomerEmail")
+                        .IsRequired();
+
+                    b.Property<string>("CustomerFirstName")
+                        .IsRequired();
+
+                    b.Property<string>("CustomerLastName")
+                        .IsRequired();
 
                     b.Property<DateTime>("OrderDate");
 
-                    b.Property<double>("Price");
+                    b.Property<double>("PurchasePrice");
 
                     b.Property<int>("VehicleID");
 
                     b.Property<string>("VehicleName");
 
                     b.HasKey("OrderId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("VehicleID");
 
                     b.ToTable("Orders");
                 });
@@ -95,19 +79,6 @@ namespace ElysianMotors.Migrations
                     b.HasKey("VehicleID");
 
                     b.ToTable("Vehicles");
-                });
-
-            modelBuilder.Entity("ElysianMotors.Models.Order", b =>
-                {
-                    b.HasOne("ElysianMotors.Models.Customer", "PurchaseCustomer")
-                        .WithMany("CustomerToVehicle")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ElysianMotors.Models.Vehicle", "SoldVehicle")
-                        .WithMany("VehicleToCustomer")
-                        .HasForeignKey("VehicleID")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
