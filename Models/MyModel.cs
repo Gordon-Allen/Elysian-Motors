@@ -58,7 +58,8 @@ namespace ElysianMotors.Models
 
         [Required]
         public int NumberOfSeats { get; set; }
-        // public byte Img { get; set; }
+
+        public string ImageUrl { get; set; }
 
         [Required]
         public string Price { get; set; }
