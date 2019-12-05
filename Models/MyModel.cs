@@ -31,14 +31,21 @@ namespace ElysianMotors.Models
 
         [Required]
         [MinLength(1, ErrorMessage = "Please select your Vehicles 'Type' from the drop-down list")]
+        [Display(Name = "Vehicle-Type")]
         public string VehicleType { get; set; }
 
         [Required]
         [MinLength(2, ErrorMessage = "Your Vehicle's 'Engine-Type' must be at least (2) characters long")]
+        [Display(Name = "Engine-Type")]
+
         public string EngineType { get; set; }
 
         [Required]
+        [Display(Name = "# of Seats")]
         public int NumberOfSeats { get; set; }
+
+        [Required]
+        [Display(Name = "URL Image of Your Vehicle")]
 
         public string ImageUrl { get; set; }
 
