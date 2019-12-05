@@ -76,5 +76,15 @@ namespace ElysianMotors.Controllers
             }        
         }
 
+        [Route("detail/{id}")]
+        [HttpGet]
+        public IActionResult VehicleDetail(int id)
+        {
+            Vehicle v = dbContext.Vehicles
+            .FirstOrDefault(pro => pro.VehicleID == id);
+
+            ViewBag.VehicleDetail = v;
+            return View("VehicleDetail");
+        }
     }
 }

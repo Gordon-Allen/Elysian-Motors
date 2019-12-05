@@ -16,6 +16,7 @@
             <th scope="col">Engine Type</th>
             <th scope="col"># of Seats</th>
             <th scope="col">Price</th>
+            <th scope="col">Vehicle Detail</th>
         </tr>
     </thead>
     <tbody>
@@ -31,6 +32,7 @@
                 <td>@v.EngineType</td>
                 <td>@v.NumberOfSeats</td>
                 <td>@v.Price</td>
+                <td><a href="/detail/@v.VehicleID"><button>View</button></a></td>
             </tr>
         }
     </tbody>
