@@ -1,0 +1,38 @@
+@model Order
+
+<h2>Enter Your Personal Information To Complete Your Order:</h2>
+<form asp-action="btCreateOrder" asp-controller="Home" method="POST">
+
+    <div class="form-group row">
+        <span asp-validation-for="CustomerFirstName"></span>
+        <label asp-for="CustomerFirstName" class="col-sm-2 col-form-label"></label>
+        <input type="text" asp-for="CustomerFirstName" >
+    </div>
+    <div class="form-group row">
+        <span asp-validation-for="CustomerLastName"></span>
+        <label asp-for="CustomerLastName" class="col-sm-2 col-form-label"></label>
+        <input type="text" asp-for="CustomerLastName" >
+    </div>
+    <div class="form-group row">
+        <span asp-validation-for="CustomerEmail"></span>
+        <label asp-for="CustomerEmail" class="col-sm-2 col-form-label"></label>
+        <input type="text" asp-for="CustomerEmail" >
+    </div>
+
+    <input type="hidden" value="@ViewBag.VehicleDetail.VehicleID" asp-for="VehicleID">
+
+    <input type="hidden" value="@ViewBag.VehicleDetail.Year @ViewBag.VehicleDetail.Make @ViewBag.VehicleDetail.Model" asp-for="VehicleName">
+
+    <input type="hidden" value="@ViewBag.VehicleDetail.Price" asp-for="PurchasePrice">
+
+    <input type="submit" class="btn btn-success" value="Finalize Purchase">
+
+</form>
+
+<h4>In Cart: @ViewBag.VehicleDetail.Year @ViewBag.VehicleDetail.Make @ViewBag.VehicleDetail.Model</h1>
+<h5>Color: <em>@ViewBag.VehicleDetail.Color</em></h5>
+<h5>Mileage: <em>@ViewBag.VehicleDetail.Mileage Miles</em></h5>
+<h5>Vehicle-Type: <em>@ViewBag.VehicleDetail.VehicleType</em></h5>
+<h5>Engine-Type: <em>@ViewBag.VehicleDetail.EngineType</em></h5>
+<h5>Number of Seats: <em>@ViewBag.VehicleDetail.NumberOfSeats</em></h5>
+<h5>Price: <em>@ViewBag.VehicleDetail.Price</em></h5>

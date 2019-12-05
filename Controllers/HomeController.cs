@@ -62,6 +62,7 @@ namespace ElysianMotors.Controllers
             Console.WriteLine(newVehicle.VehicleType);
             Console.WriteLine(newVehicle.EngineType);
             Console.WriteLine(newVehicle.NumberOfSeats);
+            Console.WriteLine(newVehicle.ImageUrl);
             Console.WriteLine(newVehicle.Price);
 
             if (ModelState.IsValid){
@@ -86,5 +87,17 @@ namespace ElysianMotors.Controllers
             ViewBag.VehicleDetail = v;
             return View("VehicleDetail");
         }
+
+        [Route("detail/purchase/{id}")]
+        [HttpGet]
+        public IActionResult PurchaseVehicle(int id)
+        {
+            Vehicle purchaseV = dbContext.Vehicles
+            .FirstOrDefault(pro => pro.VehicleID == id);
+
+            ViewBag.VehicleDetail = purchaseV;
+            return View("PurchaseVehicle");
+        }
+
     }
 }

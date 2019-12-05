@@ -3,7 +3,7 @@
 <br>
 <fieldset class="vehicledetail-container">
     <h1>@ViewBag.VehicleDetail.Year @ViewBag.VehicleDetail.Make @ViewBag.VehicleDetail.Model</h1>
-    <button class="btn btn-success"><a href="">Purchase</a></button>
+    <button class="btn btn-success"><a href="/detail/purchase/@ViewBag.VehicleDetail.VehicleID">Purchase</a></button>
     <br>
     <img src="@ViewBag.VehicleDetail.ImageUrl"/>
     <h3>Color:</h3> <h4>@ViewBag.VehicleDetail.Color</h4>
