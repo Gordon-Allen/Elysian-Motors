@@ -71,6 +71,8 @@ namespace ElysianMotors.Migrations
                     b.Property<string>("EngineType")
                         .IsRequired();
 
+                    b.Property<string>("ImageUrl");
+
                     b.Property<string>("Make")
                         .IsRequired();
 

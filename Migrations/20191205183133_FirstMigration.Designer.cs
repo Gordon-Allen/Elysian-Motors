@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ElysianMotors.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20191204161527_FirstMigration")]
+    [Migration("20191205183133_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,23 +67,30 @@ namespace ElysianMotors.Migrations
                     b.Property<int>("VehicleID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Color");
+                    b.Property<string>("Color")
+                        .IsRequired();
 
-                    b.Property<string>("EngineType");
+                    b.Property<string>("EngineType")
+                        .IsRequired();
 
-                    b.Property<byte>("Img");
+                    b.Property<string>("ImageUrl");
 
-                    b.Property<string>("Make");
+                    b.Property<string>("Make")
+                        .IsRequired();
 
-                    b.Property<int>("Mileage");
+                    b.Property<string>("Mileage")
+                        .IsRequired();
 
-                    b.Property<string>("Model");
+                    b.Property<string>("Model")
+                        .IsRequired();
 
                     b.Property<int>("NumberOfSeats");
 
-                    b.Property<double>("Price");
+                    b.Property<string>("Price")
+                        .IsRequired();
 
-                    b.Property<string>("VehicleType");
+                    b.Property<string>("VehicleType")
+                        .IsRequired();
 
                     b.Property<int>("Year");
 
