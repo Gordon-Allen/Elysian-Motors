@@ -1,5 +1,10 @@
 @model Order
 
+@{
+    ViewData["Title"] = "Purchase Your Dream Vehicle";
+}
+
+<br>
 <h2>Enter Your Personal Information To Complete Your Order:</h2>
 <form asp-action="btCreateOrder" asp-controller="Home" method="POST">
 
@@ -29,10 +34,11 @@
 
 </form>
 
-<h4>In Cart: @ViewBag.VehicleDetail.Year @ViewBag.VehicleDetail.Make @ViewBag.VehicleDetail.Model</h1>
-<h5>Color: <em>@ViewBag.VehicleDetail.Color</em></h5>
-<h5>Mileage: <em>@ViewBag.VehicleDetail.Mileage Miles</em></h5>
-<h5>Vehicle-Type: <em>@ViewBag.VehicleDetail.VehicleType</em></h5>
-<h5>Engine-Type: <em>@ViewBag.VehicleDetail.EngineType</em></h5>
-<h5>Number of Seats: <em>@ViewBag.VehicleDetail.NumberOfSeats</em></h5>
-<h5>Price: <em>@ViewBag.VehicleDetail.Price</em></h5>
+<br>
+<h3>In Cart: @ViewBag.VehicleDetail.Year @ViewBag.VehicleDetail.Make @ViewBag.VehicleDetail.Model</h3>
+<h4>Color: <em>@ViewBag.VehicleDetail.Color</em></h4>
+<h4>Mileage: <em>@ViewBag.VehicleDetail.Mileage Miles</em></h4>
+<h4>Vehicle-Type: <em>@ViewBag.VehicleDetail.VehicleType</em></h4>
+<h4>Engine-Type: <em>@ViewBag.VehicleDetail.EngineType</em></h4>
+<h4>Number of Seats: <em>@ViewBag.VehicleDetail.NumberOfSeats</em></h4>
+<h4>Price: <em>@ViewBag.VehicleDetail.Price</em></h4>

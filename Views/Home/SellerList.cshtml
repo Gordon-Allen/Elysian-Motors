@@ -1,9 +1,15 @@
 @model Vehicle
 
-<div class="header">
-    <h1>Recently Added Vehicles For Sale</h1>
-</div>
+@{
+    ViewData["Title"] = "Vehicle List";
+}
 
+<br>
+<div class="header">
+    <h1>Vehicles For Sale:</h1>
+    <h3><em>Your Dream Vehicle Awaits</em></h3>
+</div>
+<br>
 <table class="table">
     <thead>
         <tr>
@@ -12,9 +18,9 @@
             <th scope="col">Model</th>
             <th scope="col">Color</th>
             <th scope="col">Mileage</th>
-            <th scope="col">Vehicle Type</th>
-            <th scope="col">Engine Type</th>
-            <th scope="col"># of Seats</th>
+            <th scope="col">Type</th>
+            <th scope="col">Engine</th>
+            <th scope="col">Seats</th>
             <th scope="col">Price</th>
             <th scope="col">Vehicle Detail</th>
         </tr>
@@ -22,7 +28,7 @@
     <tbody>
         @foreach(var v in ViewBag.AllVehicles)
         {
-            <tr>
+            <tr style="border: 2px solid white">
                 <td>@v.Year</td>
                 <td>@v.Make</td>
                 <td>@v.Model</td>
@@ -32,7 +38,7 @@
                 <td>@v.EngineType</td>
                 <td>@v.NumberOfSeats</td>
                 <td>@v.Price</td>
-                <td><a href="/detail/@v.VehicleID"><button>View</button></a></td>
+                <td><a href="/detail/@v.VehicleID"><button class="btn btn-warning" style="width: 100px; font-size: 16px;">View</button></a></td>
             </tr>
         }
     </tbody>

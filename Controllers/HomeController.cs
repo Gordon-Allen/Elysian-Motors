@@ -68,7 +68,7 @@ namespace ElysianMotors.Controllers
             if (ModelState.IsValid){
                 dbContext.Add(newVehicle);
                 dbContext.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("SellerList");
             }
             else
             {
