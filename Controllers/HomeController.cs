@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -8,11 +9,40 @@ using ElysianMotors.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Google.Apis.Auth.OAuth2;
+using Google.Apis.Services;
+using Google.Apis.Sheets.v4;
+using Google.Apis.Sheets.v4.Data;
+
 
 namespace ElysianMotors.Controllers
 {
     public class HomeController : Controller
     {
+        static readonly string[] Scopes = { SheetsService.Scope.Spreadsheets };
+        static readonly string ApplicationName = "Elysian Motors";
+        static readonly string sheet = "EM_Orders";
+        static readonly string SpreadsheetId = "18BCAtEdGgRsiMoHtOjBZsfr3tNFiKUG2TI97KSH0Eyw";
+        static SheetsService service;
+
+        static void Init(){
+
+        GoogleCredential credential;
+        //Reading Credentials File...
+        using (var stream = new FileStream("app_client_secret.json", FileMode.Open, FileAccess.Read))
+        {
+            credential = GoogleCredential.FromStream(stream)
+                .CreateScoped(Scopes);
+        }
+
+        // Creating Google Sheets API service...
+        service = new SheetsService(new BaseClientService.Initializer()
+        {
+            HttpClientInitializer = credential,
+            ApplicationName = ApplicationName,
+        });
+        }
+
         private MyContext dbContext;
 
         // here we can "inject" our context service into the constructor
@@ -116,6 +146,7 @@ namespace ElysianMotors.Controllers
             Console.WriteLine(newOrder.CustomerFirstName);
             Console.WriteLine(newOrder.CustomerLastName);
             Console.WriteLine(newOrder.CustomerEmail);
+            Console.WriteLine(newOrder.PurchasePrice);
             Console.WriteLine(newOrder.OrderDate);
 
             if (ModelState.IsValid){
@@ -123,6 +154,19 @@ namespace ElysianMotors.Controllers
                 Vehicle removePurchaseV = dbContext.Vehicles.FirstOrDefault(web => web.VehicleID == newOrder.VehicleID);
                 dbContext.Remove(removePurchaseV);
                 dbContext.SaveChanges();
+
+                Init();
+                var range = $"{sheet}!A:G";
+                var valueRange = new ValueRange();
+
+                // Data for Order...
+                var oblist = new List<object>() { newOrder.OrderId, newOrder.VehicleID, newOrder.VehicleName, newOrder.CustomerFirstName, newOrder.CustomerLastName, newOrder.CustomerEmail, newOrder.PurchasePrice, newOrder.OrderDate};
+                valueRange.Values = new List<IList<object>> { oblist };
+
+                // Append the above record To 'Elysian Motors' G-Sheet..
+                var appendRequest = service.Spreadsheets.Values.Append(valueRange, SpreadsheetId, range);
+                appendRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
+                var appendReponse = appendRequest.Execute();
                 return RedirectToAction("PurchaseConfirmation", new {id = newOrder.OrderId});
             }
             else
