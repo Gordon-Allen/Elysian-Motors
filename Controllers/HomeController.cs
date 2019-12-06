@@ -54,6 +54,7 @@ namespace ElysianMotors.Controllers
         [HttpPost]
         public IActionResult btAddVehicle(Vehicle newVehicle)
         {
+            Console.WriteLine(newVehicle.VehicleID);
             Console.WriteLine(newVehicle.Year);
             Console.WriteLine(newVehicle.Make);
             Console.WriteLine(newVehicle.Model);
@@ -84,6 +85,7 @@ namespace ElysianMotors.Controllers
             Vehicle v = dbContext.Vehicles
             .FirstOrDefault(pro => pro.VehicleID == id);
 
+            TempData["pVehicleID"] = id;
             ViewBag.VehicleDetail = v;
             return View("VehicleDetail");
         }
@@ -94,10 +96,44 @@ namespace ElysianMotors.Controllers
         {
             Vehicle purchaseV = dbContext.Vehicles
             .FirstOrDefault(pro => pro.VehicleID == id);
-
             ViewBag.VehicleDetail = purchaseV;
             return View("PurchaseVehicle");
         }
+
+        [Route("btCreateOrder")]
+        [HttpPost]
+        public IActionResult btCreateOrder(int? id, Order newOrder)
+        {
+            Vehicle confirmpurchaseV = dbContext.Vehicles
+            .FirstOrDefault(pro => pro.VehicleID == id);
+            newOrder.VehicleID = confirmpurchaseV.VehicleID;
+            newOrder.VehicleName = confirmpurchaseV.Year + " " + confirmpurchaseV.Make + " " + confirmpurchaseV.Model;
+            newOrder.PurchasePrice = confirmpurchaseV.Price;
+
+            Console.WriteLine(newOrder.OrderId);
+            Console.WriteLine(newOrder.VehicleID);
+            Console.WriteLine(newOrder.VehicleName);
+            Console.WriteLine(newOrder.CustomerFirstName);
+            Console.WriteLine(newOrder.CustomerLastName);
+            Console.WriteLine(newOrder.CustomerEmail);
+            Console.WriteLine(newOrder.OrderDate);
+
+            if (ModelState.IsValid){
+                dbContext.Add(newOrder);
+
+                Vehicle removePurchaseV = dbContext.Vehicles.FirstOrDefault(web => web.VehicleID == newOrder.VehicleID);
+                dbContext.Remove(removePurchaseV);
+
+                dbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                Console.WriteLine("<--------- Error Adding Order to DB -----------> ");
+                return View("PurchaseVehicle");
+            }        
+        }
+
 
     }
 }

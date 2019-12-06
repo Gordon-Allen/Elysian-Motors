@@ -6,7 +6,7 @@
 
 <br>
 <h2>Enter Your Personal Information To Complete Your Order:</h2>
-<form asp-action="btCreateOrder" asp-controller="Home" method="POST">
+<form asp-action="btCreateOrder" asp-route-id = "@ViewBag.VehicleDetail.VehicleID" asp-controller="Home" method="POST">
 
     <div class="form-group row">
         <span asp-validation-for="CustomerFirstName"></span>
@@ -24,18 +24,13 @@
         <input type="text" asp-for="CustomerEmail" >
     </div>
 
-    <input type="hidden" value="@ViewBag.VehicleDetail.VehicleID" asp-for="VehicleID">
-
-    <input type="hidden" value="@ViewBag.VehicleDetail.Year @ViewBag.VehicleDetail.Make @ViewBag.VehicleDetail.Model" asp-for="VehicleName">
-
-    <input type="hidden" value="@ViewBag.VehicleDetail.Price" asp-for="PurchasePrice">
-
     <input type="submit" class="btn btn-success" value="Finalize Purchase">
 
 </form>
 
 <br>
 <h3>In Cart: @ViewBag.VehicleDetail.Year @ViewBag.VehicleDetail.Make @ViewBag.VehicleDetail.Model</h3>
+<h4>Vehicle ID: <em>@ViewBag.VehicleDetail.VehicleID</em></h4>
 <h4>Color: <em>@ViewBag.VehicleDetail.Color</em></h4>
 <h4>Mileage: <em>@ViewBag.VehicleDetail.Mileage Miles</em></h4>
 <h4>Vehicle-Type: <em>@ViewBag.VehicleDetail.VehicleType</em></h4>
