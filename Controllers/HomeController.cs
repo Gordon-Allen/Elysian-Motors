@@ -120,12 +120,10 @@ namespace ElysianMotors.Controllers
 
             if (ModelState.IsValid){
                 dbContext.Add(newOrder);
-
                 Vehicle removePurchaseV = dbContext.Vehicles.FirstOrDefault(web => web.VehicleID == newOrder.VehicleID);
                 dbContext.Remove(removePurchaseV);
-
                 dbContext.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("PurchaseConfirmation", new {id = newOrder.OrderId});
             }
             else
             {
@@ -133,6 +131,17 @@ namespace ElysianMotors.Controllers
                 return View("PurchaseVehicle");
             }        
         }
+
+        [Route("purchaseconfirmation/{id}")]
+        [HttpGet]
+        public IActionResult PurchaseConfirmation(int id)
+        {
+            Order confirmOrder = dbContext.Orders
+            .FirstOrDefault(pro => pro.OrderId == id);
+            ViewBag.OrderDetail = confirmOrder;
+            return View("PurchaseConfirmation");
+        }
+
 
 
     }
