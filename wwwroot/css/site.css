@@ -67,7 +67,7 @@ body {
 }
 
 .about_container p {
-    margin-left: 10px;
+    margin-left: 15px;
     font-size: 20px;
 }
 
@@ -78,10 +78,8 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("../images/aboutpagebackground2.jpg") center center;
-    opacity: .3;
-    width: 90%;
-    height: 90%;
+    /* background: url("../images/aboutpagebackground2.jpg") center center; */
+    opacity: .2;
 }
 
 .header h1
