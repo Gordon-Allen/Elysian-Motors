@@ -14,7 +14,6 @@ using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
 using Google.Apis.Sheets.v4.Data;
 
-
 namespace ElysianMotors.Controllers
 {
     public class HomeController : Controller
@@ -103,7 +102,7 @@ namespace ElysianMotors.Controllers
             }
             else
             {
-                Console.WriteLine("<--------- Error Adding Vehicle to DB -----------> ");
+                Console.WriteLine("<--------- Error Adding VEHICLE to DB -----------> ");
                 return View("AddVehicle");
             }        
         }
@@ -156,7 +155,7 @@ namespace ElysianMotors.Controllers
                 dbContext.SaveChanges();
 
                 Init();
-                var range = $"{sheet}!A:G";
+                var range = $"{sheet}!A:H";
                 var valueRange = new ValueRange();
 
                 // Data for Order...
@@ -171,7 +170,7 @@ namespace ElysianMotors.Controllers
             }
             else
             {
-                Console.WriteLine("<--------- Error Adding Order to DB -----------> ");
+                Console.WriteLine("<--------- Error Adding ORDER to DB -----------> ");
                 return View("PurchaseVehicle");
             }        
         }
@@ -185,8 +184,6 @@ namespace ElysianMotors.Controllers
             ViewBag.OrderDetail = confirmOrder;
             return View("PurchaseConfirmation");
         }
-
-
 
     }
 }

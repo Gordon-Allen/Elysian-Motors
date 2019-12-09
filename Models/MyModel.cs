@@ -75,7 +75,6 @@ namespace ElysianMotors.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string CustomerEmail { get; set; }
-
         public DateTime OrderDate { get; set; } = DateTime.Now;
 
     }
