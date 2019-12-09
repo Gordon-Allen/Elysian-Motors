@@ -19,4 +19,4 @@ msbuild.wrn
 # Visual Studio 2015
 .vs/
 
-app_client_secret.jsonapp_client_secret.json
+app_client_secret.json

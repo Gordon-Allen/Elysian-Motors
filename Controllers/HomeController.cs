@@ -24,9 +24,10 @@ namespace ElysianMotors.Controllers
         static readonly string SpreadsheetId = "18BCAtEdGgRsiMoHtOjBZsfr3tNFiKUG2TI97KSH0Eyw";
         static SheetsService service;
 
-        static void Init(){
+        static void GoogleSheets_Init(){
 
         GoogleCredential credential;
+
         //Reading Credentials File...
         using (var stream = new FileStream("app_client_secret.json", FileMode.Open, FileAccess.Read))
         {
@@ -44,7 +45,6 @@ namespace ElysianMotors.Controllers
 
         private MyContext dbContext;
 
-        // here we can "inject" our context service into the constructor
         public HomeController(MyContext context)
         {
             dbContext = context;
@@ -154,7 +154,7 @@ namespace ElysianMotors.Controllers
                 dbContext.Remove(removePurchaseV);
                 dbContext.SaveChanges();
 
-                Init();
+                GoogleSheets_Init();
                 var range = $"{sheet}!A:H";
                 var valueRange = new ValueRange();
 
@@ -166,6 +166,7 @@ namespace ElysianMotors.Controllers
                 var appendRequest = service.Spreadsheets.Values.Append(valueRange, SpreadsheetId, range);
                 appendRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
                 var appendReponse = appendRequest.Execute();
+                
                 return RedirectToAction("PurchaseConfirmation", new {id = newOrder.OrderId});
             }
             else
