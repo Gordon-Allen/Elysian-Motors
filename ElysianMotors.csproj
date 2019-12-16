@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="<<ENTER NAME OF GOOGLE SHEETS CREDENTIALS JSON FILE>>">
+    <None Update="ENTER NAME OF GOOGLE SHEETS CREDENTIALS JSON FILE">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
