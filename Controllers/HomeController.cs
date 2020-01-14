@@ -18,30 +18,30 @@ namespace ElysianMotors.Controllers
 {
     public class HomeController : Controller
     {
-        static readonly string[] Scopes = { SheetsService.Scope.Spreadsheets };
-        static readonly string ApplicationName = "<<ENTER NAME OF PROJECT YOU SPECIFIED IN GOOGLE DEVELOPER CONSOLE>>";
-        static readonly string sheet = "<<ENTER NAME OF SPECFIC SHEET WITHIN YOUR GOOGLE SHEETS SPREADSHEET YOU WISH TO SEND INFO TO (DEFAULT IS 'Sheet 1')>>";
-        static readonly string SpreadsheetId = "<<ENTER GOOGLE SHEETS SPREADSHEET ID, FROUND IN GOOGLE SHEETS URL>>";
-        static SheetsService service;
+        // static readonly string[] Scopes = { SheetsService.Scope.Spreadsheets };
+        // static readonly string ApplicationName = "<<ENTER NAME OF PROJECT YOU SPECIFIED IN GOOGLE DEVELOPER CONSOLE>>";
+        // static readonly string sheet = "<<ENTER NAME OF SPECFIC SHEET WITHIN YOUR GOOGLE SHEETS SPREADSHEET YOU WISH TO SEND INFO TO (DEFAULT IS 'Sheet 1')>>";
+        // static readonly string SpreadsheetId = "<<ENTER GOOGLE SHEETS SPREADSHEET ID, FROUND IN GOOGLE SHEETS URL>>";
+        // static SheetsService service;
 
-        static void GoogleSheets_Init(){
+        // static void GoogleSheets_Init(){
 
-        GoogleCredential credential;
+        // GoogleCredential credential;
 
-        //Reading Credentials File...
-        using (var stream = new FileStream("<<ENTER NAME OF GOOGLE SHEETS CREDENTIALS JSON FILE>>", FileMode.Open, FileAccess.Read))
-        {
-            credential = GoogleCredential.FromStream(stream)
-                .CreateScoped(Scopes);
-        }
+        // //Reading Credentials File...
+        // using (var stream = new FileStream("<<ENTER NAME OF GOOGLE SHEETS CREDENTIALS JSON FILE>>", FileMode.Open, FileAccess.Read))
+        // {
+        //     credential = GoogleCredential.FromStream(stream)
+        //         .CreateScoped(Scopes);
+        // }
 
-        // Creating Google Sheets API service...
-        service = new SheetsService(new BaseClientService.Initializer()
-        {
-            HttpClientInitializer = credential,
-            ApplicationName = ApplicationName,
-        });
-        }
+        // // Creating Google Sheets API service...
+        // service = new SheetsService(new BaseClientService.Initializer()
+        // {
+        //     HttpClientInitializer = credential,
+        //     ApplicationName = ApplicationName,
+        // });
+        // }
 
         private MyContext dbContext;
 
@@ -154,18 +154,18 @@ namespace ElysianMotors.Controllers
                 dbContext.Remove(removePurchaseV);
                 dbContext.SaveChanges();
 
-                GoogleSheets_Init();
-                var range = $"{sheet}!A:H";
-                var valueRange = new ValueRange();
+                // GoogleSheets_Init();
+                // var range = $"{sheet}!A:H";
+                // var valueRange = new ValueRange();
 
-                // Data for Order...
-                var oblist = new List<object>() { newOrder.OrderId, newOrder.VehicleID, newOrder.VehicleName, newOrder.CustomerFirstName, newOrder.CustomerLastName, newOrder.CustomerEmail, newOrder.PurchasePrice, newOrder.OrderDate};
-                valueRange.Values = new List<IList<object>> { oblist };
+                // // Data for Order...
+                // var oblist = new List<object>() { newOrder.OrderId, newOrder.VehicleID, newOrder.VehicleName, newOrder.CustomerFirstName, newOrder.CustomerLastName, newOrder.CustomerEmail, newOrder.PurchasePrice, newOrder.OrderDate};
+                // valueRange.Values = new List<IList<object>> { oblist };
 
-                // Append the above record To 'Elysian Motors' G-Sheet..
-                var appendRequest = service.Spreadsheets.Values.Append(valueRange, SpreadsheetId, range);
-                appendRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
-                var appendReponse = appendRequest.Execute();
+                // // Append the above record To 'Elysian Motors' G-Sheet..
+                // var appendRequest = service.Spreadsheets.Values.Append(valueRange, SpreadsheetId, range);
+                // appendRequest.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.USERENTERED;
+                // var appendReponse = appendRequest.Execute();
                 
                 return RedirectToAction("PurchaseConfirmation", new {id = newOrder.OrderId});
             }
