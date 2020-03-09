@@ -12,7 +12,6 @@ namespace ElysianMotors.Controllers
 {
     public class VehicleController : Controller
     {
-
         private MyContext dbContext;
 
         public VehicleController(MyContext context)
@@ -76,6 +75,5 @@ namespace ElysianMotors.Controllers
             ViewBag.VehicleDetail = v;
             return View("VehicleDetail");
         }
-
     }
 }

@@ -52,5 +52,4 @@ namespace ElysianMotors.Models
         [Required]
         public string Price { get; set; }
     }
-
 }

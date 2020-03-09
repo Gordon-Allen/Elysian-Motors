@@ -117,6 +117,5 @@ namespace ElysianMotors.Controllers
             ViewBag.OrderDetail = confirmOrder;
             return View("PurchaseConfirmation");
         }
-
     }
 }

@@ -14,7 +14,6 @@ namespace ElysianMotors.Controllers
 {
     public class HomeController : Controller
     {
-
         private MyContext dbContext;
 
         public HomeController(MyContext context)

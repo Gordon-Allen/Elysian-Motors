@@ -4,12 +4,11 @@
     ViewData["Title"] = "Your Dream Car";
 }
 
-
 <br>
 <fieldset class="vehicledetail-container">
     <h1>@ViewBag.VehicleDetail.Year @ViewBag.VehicleDetail.Make @ViewBag.VehicleDetail.Model</h1>
     <form asp-action="purchase" asp-route-id = "@ViewBag.VehicleDetail.VehicleID" asp-controller="Order" method="GET">
-        <input type="submit" class="btn btn-success" value="Purchase" style="    width: 150px; margin-left: 40%; margin-right: 50%; font-size: medium;">
+        <input type="submit" class="btn btn-success" value="Purchase" style="width: 150px; margin-left: 40%; margin-right: 50%; font-size: medium;">
     </form>
     <br>
     <img src="@ViewBag.VehicleDetail.ImageUrl" style="border:2px solid white;"/>
