@@ -60,7 +60,6 @@ namespace ElysianMotors.Controllers
             return View("PurchaseVehicle");
         }
 
-
         [Route("Order/btCreateOrder")]
         [HttpPost]
         public IActionResult btCreateOrder(int? id, Order newOrder)
