@@ -7,7 +7,7 @@
 <br>
 <h2 style="text-align: center; text-decoration-line: underline;">Enter Your Personal Information To Complete Your Order</h2>
 <br>
-<form asp-action="btCreateOrder" asp-route-id = "@ViewBag.VehicleDetail.VehicleID" asp-controller="Home" method="POST">
+<form asp-action="btCreateOrder" asp-route-id = "@ViewBag.VehicleDetail.VehicleID" asp-controller="Order" method="POST">
     <div class="form-group row">
         <span asp-validation-for="CustomerFirstName"></span>
         <label asp-for="CustomerFirstName" class="col-sm-2 col-form-label"></label>
