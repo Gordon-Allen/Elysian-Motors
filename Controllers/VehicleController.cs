@@ -33,7 +33,6 @@ namespace ElysianMotors.Controllers
             .ToList();
             ViewBag.AllVehicles = allVehicles;
             return View();
-
         }
 
         [Route("btAddVehicle")]
