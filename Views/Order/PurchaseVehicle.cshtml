@@ -33,4 +33,4 @@
 <h4>Vehicle-Type: <em>@ViewBag.VehicleDetail.VehicleType</em></h4>
 <h4>Engine-Type: <em>@ViewBag.VehicleDetail.EngineType</em></h4>
 <h4>Number of Seats: <em>@ViewBag.VehicleDetail.NumberOfSeats</em></h4>
-<h4>Price: <em>@ViewBag.VehicleDetail.Price</em></h4>
+<h4>Price: <em>$@Math.Round(@ViewBag.VehicleDetail.Price, 2)</em></h4>

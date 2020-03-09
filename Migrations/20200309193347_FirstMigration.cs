@@ -16,7 +16,7 @@ namespace ElysianMotors.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     VehicleID = table.Column<int>(nullable: false),
                     VehicleName = table.Column<string>(nullable: true),
-                    PurchasePrice = table.Column<double>(nullable: false),
+                    PurchasePrice = table.Column<decimal>(nullable: false),
                     CustomerFirstName = table.Column<string>(nullable: false),
                     CustomerLastName = table.Column<string>(nullable: false),
                     CustomerEmail = table.Column<string>(nullable: false),
@@ -37,12 +37,12 @@ namespace ElysianMotors.Migrations
                     Make = table.Column<string>(nullable: false),
                     Model = table.Column<string>(nullable: false),
                     Color = table.Column<string>(nullable: false),
-                    Mileage = table.Column<string>(nullable: false),
+                    Mileage = table.Column<int>(nullable: false),
                     VehicleType = table.Column<string>(nullable: false),
                     EngineType = table.Column<string>(nullable: false),
                     NumberOfSeats = table.Column<int>(nullable: false),
-                    ImageUrl = table.Column<string>(nullable: true),
-                    Price = table.Column<string>(nullable: false)
+                    ImageUrl = table.Column<string>(nullable: false),
+                    Price = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {

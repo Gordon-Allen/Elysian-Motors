@@ -13,7 +13,7 @@ namespace ElysianMotors.Models
         public int OrderId { get; set; }
         public int VehicleID { get; set; }
         public string VehicleName {get; set;}
-        public string PurchasePrice {get; set;}
+        public decimal PurchasePrice {get; set;}
 
         [Required]
         [MinLength(2, ErrorMessage = "Your 'First-Name' has to be at least (2) characters")]

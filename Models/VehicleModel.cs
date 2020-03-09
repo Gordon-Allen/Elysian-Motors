@@ -15,19 +15,19 @@ namespace ElysianMotors.Models
         public int Year { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = "Your Vehicle's 'Make' must be at least (3) characters long")]
+        [MinLength(3, ErrorMessage = "Your Vehicle's 'Make' must contain at least (3) characters")]
         public string Make { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = "Your Vehicle's 'Model' must be at least (3) characters long")]
+        [MinLength(3, ErrorMessage = "Your Vehicle's 'Model' must contain at least (3) characters")]
         public string Model { get; set; }
 
         [Required]
-        [MinLength(3, ErrorMessage = "Your Vehicle's 'Color' must be at least (3) characters long")]
+        [MinLength(3, ErrorMessage = "Your Vehicle's 'Color' must contain at least (3) characters")]
         public string Color { get; set; }
 
         [Required]
-        public string Mileage { get; set; }
+        public int Mileage { get; set; }
 
         [Required]
         [MinLength(1, ErrorMessage = "Please select your Vehicles 'Type' from the drop-down list")]
@@ -35,7 +35,7 @@ namespace ElysianMotors.Models
         public string VehicleType { get; set; }
 
         [Required]
-        [MinLength(2, ErrorMessage = "Your Vehicle's 'Engine-Type' must be at least (2) characters long")]
+        [MinLength(2, ErrorMessage = "Your Vehicle's 'Engine-Type' must contain at least (2) characters")]
         [Display(Name = "Engine-Type")]
 
         public string EngineType { get; set; }
@@ -45,11 +45,11 @@ namespace ElysianMotors.Models
         public int NumberOfSeats { get; set; }
 
         [Required]
-        [Display(Name = "URL Image of Your Vehicle")]
+        [Display(Name = "Vehicle Image URL")]
 
         public string ImageUrl { get; set; }
 
         [Required]
-        public string Price { get; set; }
+        public decimal Price { get; set; }
     }
 }

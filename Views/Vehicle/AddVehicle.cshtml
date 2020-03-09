@@ -7,70 +7,81 @@
 <br>
 <h1 style="text-decoration-line: underline; text-align: center;">Create Your Vehicle's Listing</h1>
 <br>
-<form asp-action="btAddVehicle" asp-controller="Vehicle" method="POST">
-    <div class="form-group row">
-        <span asp-validation-for="Year"></span>
-        <label asp-for="Year" class="col-sm-2 col-form-label" style="font-size:20px;"></label>
-        <input type="text" asp-for="Year">
+<form asp-action="btAddVehicle" asp-controller="Vehicle" method="POST" class="form-horizontal needs-validation" novalidate style="margin-left: 17.5%">
+    <div class="form-group" style="margin-bottom: 2%;">
+        <div class="col-sm-5">
+            <label asp-for="Year"></label>
+            <input type="number" class="form-control" asp-for="Year" placeholder="2020">
+            <span asp-validation-for="Year"></span>
+        </div>
+        <div class="col-sm-5">
+            <label asp-for="Make"></label>
+            <input type="text" class="form-control" asp-for="Make" placeholder="Bentley">
+            <span asp-validation-for="Make"></span>
+        </div>
     </div>
-    <div class="form-group row">
-        <span asp-validation-for="Make"></span>
-        <label asp-for="Make" class="col-sm-2 col-form-label" style="font-size:20px;"></label>
-        <input type="text" asp-for="Make">
+    <div class="form-group">
+        <div class="col-sm-5">
+            <label asp-for="Mileage"></label>
+            <input type="number" class="form-control" asp-for="Mileage" placeholder="47,582">
+            <span asp-validation-for="Mileage"></span>
+        </div>
+        <div class="col-sm-5">
+            <label asp-for="Model"></label>
+            <input type="text" class="form-control" asp-for="Model" placeholder="Continental GT">
+            <span asp-validation-for="Model"></span>
+        </div>
     </div>
-    <div class="form-group row">
-        <span asp-validation-for="Model"></span>
-        <label asp-for="Model" class="col-sm-2 col-form-label" style="font-size:20px;"></label>
-        <input type="text" asp-for="Model">
+    <div class="form-group">
+        <div class="col-sm-5">
+            <label asp-for="Color"></label>
+            <input type="text" class="form-control" asp-for="Color" placeholder="Black">
+            <span asp-validation-for="Color"></span>
+        </div>
+        <div class="col-sm-5">
+            <label asp-for="VehicleType"></label>
+            <select type="text"class="form-control" asp-for="VehicleType" >
+                <option value="">Select Your Vehicle's Type</option>
+                <option value="Classic">Classic</option>
+                <option value="Electric">Electric</option>
+                <option value="Helicopter">Helicopter</option>
+                <option value="Hot-Rod">Hot-Rod</option>
+                <option value="Luxury">Luxury</option>
+                <option value="Motorcycle">Motorcycle</option>
+                <option value="Muscle">Muscle</option>
+                <option value="Plane">Plane</option>
+                <option value="Spaceship">Spaceship</option>
+                <option value="Super-Car">Super-Car</option>
+                <option value="Super-Car (Electric)">Super-Car (Electric)</option>
+                <option value="SUV/Utility">SUV/Utility</option>
+                <option value="Tuner">Tuner</option>
+            </select>
+            <span asp-validation-for="VehicleType"></span>
+        </div>
     </div>
-    <div class="form-group row">
-        <span asp-validation-for="Color"></span>
-        <label asp-for="Color" class="col-sm-2 col-form-label" style="font-size:20px;"></label>
-        <input type="text" asp-for="Color">
+    <div class="form-group">
+        <div class="col-sm-5">
+            <label asp-for="EngineType"></label>
+            <input type="text" class="form-control" asp-for="EngineType" placeholder="5.0L V12">
+            <span asp-validation-for="EngineType"></span>
+        </div>
+        <div class="col-sm-5">
+            <label asp-for="NumberOfSeats"></label>
+            <input type="number" class="form-control" asp-for="NumberOfSeats" placeholder="4">
+            <span asp-validation-for="NumberOfSeats"></span>
+        </div>
     </div>
-    <div class="form-group row">
-        <span asp-validation-for="Mileage"></span>
-        <label asp-for="Mileage" class="col-sm-2 col-form-label" style="font-size:20px;"></label>
-        <input type="text" asp-for="Mileage">
+    <div class="form-group">
+        <div class="col-sm-5">
+            <label asp-for="ImageUrl"></label>
+            <input type="text" class="form-control" asp-for="ImageUrl" placeholder="https://www.google.com/search">
+        </div>
+        <div class="col-sm-5">
+            <label asp-for="Price"></label>
+            <input type="number" class="form-control" asp-for="Price" placeholder="$249,999.99">
+            <span asp-validation-for="Price"></span>
+        </div>
     </div>
-    <div class="form-group row">
-        <span asp-validation-for="VehicleType"></span>
-        <label asp-for="VehicleType" class="col-sm-2 col-form-label" style="font-size:20px;"></label>
-        <select type="text" asp-for="VehicleType" >
-            <option value="">Select Your Vehicle's Type</option>
-            <option value="Classic">Classic</option>
-            <option value="Electric">Electric</option>
-            <option value="Helicopter">Helicopter</option>
-            <option value="Hot-Rod">Hot-Rod</option>
-            <option value="Luxury">Luxury</option>
-            <option value="Motorcycle">Motorcycle</option>
-            <option value="Muscle">Muscle</option>
-            <option value="Plane">Plane</option>
-            <option value="Spaceship">Spaceship</option>
-            <option value="Super-Car">Super-Car</option>
-            <option value="Super-Car (Electric)">Super-Car (Electric)</option>
-            <option value="SUV/Utility">SUV/Utility</option>
-            <option value="Tuner">Tuner</option>
-        </select>
-    </div>
-    <div class="form-group row">
-        <span asp-validation-for="EngineType"></span>
-        <label asp-for="EngineType" class="col-sm-2 col-form-label" style="font-size:20px;"></label>
-        <input type="text" asp-for="EngineType">
-    </div>
-    <div class="form-group row">
-        <span asp-validation-for="NumberOfSeats"></span>
-        <label asp-for="NumberOfSeats" class="col-sm-2 col-form-label" style="font-size:20px;"></label>
-        <input type="number" asp-for="NumberOfSeats">
-    </div>
-    <div class="form-group row">
-        <label asp-for="ImageUrl" class="col-sm-2 col-form-label" style="font-size:20px;"></label>
-        <input type="text" asp-for="ImageUrl">
-    </div>
-    <div class="form-group row">
-        <span asp-validation-for="Price"></span>
-        <label asp-for="Price" class="col-sm-2 col-form-label" style="font-size:20px;"></label>
-        <input type="text" asp-for="Price">
-    </div>
-    <input type="submit" class="btn btn-warning" value="Add Your Vehicle" style="width:300px; font-size:20px;">
+    <br>
+    <input type="submit" class="btn btn-warning" value="Add Your Vehicle" style="width:300px; font-size:22px; margin-left: 21.5%">
 </form>
